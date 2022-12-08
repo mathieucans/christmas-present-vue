@@ -44,3 +44,9 @@ npm run build
 ```sh
 npm run lint
 ```
+
+### Fire base hosting
+
+```sh
+npx firebase deploy --only hosting
+```
