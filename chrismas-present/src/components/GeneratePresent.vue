@@ -1,13 +1,8 @@
 <script setup lang="ts">
 </script>
 <script lang="ts">
-class Present {
-  constructor(
-      public readonly from: string,
-      public readonly to: string) {
 
-  }
-}
+import type {Present} from "@/Present";
 
 export default {
   data() {
