@@ -1,20 +1,28 @@
 <script setup lang="ts">
 </script>
 <script lang="ts">
+class Present {
+  constructor(
+      public readonly from: string,
+      public readonly to: string) {
+
+  }
+}
+
 export default {
   data() {
     return {
-      presents: null
+      presents: new Array<Present>()
     }
   },
   methods: {
     generate() {
       this.presents = [
-          {from :'julie', to: btoa('mathieu')},
-          {from :'mathieu', to:btoa('céline')},
+        {from: 'julie', to: btoa('mathieu')},
+        {from: 'mathieu', to: btoa('céline')},
       ]
     },
-    linkFor(){
+    linkFor() {
       return 'present/mat/ju'
     }
   }
@@ -28,7 +36,8 @@ export default {
     </h1>
     <button @click="generate">Générer</button>
     <div v-for="present in presents">
-      <router-link :to="'/present/' + present.from + '/' + present.to">Le cadeau qu'offrira {{present.from}} </router-link>
+      <router-link :to="'/present/' + present.from + '/' + present.to">Le cadeau qu'offrira {{ present.from }}
+      </router-link>
     </div>
   </div>
 </template>

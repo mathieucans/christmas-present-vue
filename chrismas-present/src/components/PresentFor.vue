@@ -6,8 +6,7 @@ export default {
     }
   },
   mounted() {
-    console.log(atob(this.$route.params.to))
-    this.to = atob(this.$route.params.to)
+    this.to = atob(this.$route.params.to.toString())
   }
 }
 </script>
