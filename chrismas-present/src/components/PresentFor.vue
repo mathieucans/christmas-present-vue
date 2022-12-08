@@ -1,10 +1,20 @@
-<script setup lang="ts">
-
+<script lang="ts">
+export default {
+  data(){
+    return {
+      to : ""
+    }
+  },
+  mounted() {
+    console.log(atob(this.$route.params.to))
+    this.to = atob(this.$route.params.to)
+  }
+}
 </script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">Salut {{$route.params.from}} ! tu offriras un cadeau à {{$route.params.to}}</h1>
+    <h1 class="green">Salut {{$route.params.from}} ! tu offriras un cadeau à {{to}}</h1>
   </div>
 </template>
 

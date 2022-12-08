@@ -10,8 +10,8 @@ export default {
   methods: {
     generate() {
       this.presents = [
-          {from :'marc', to:'mathieu'},
-          {from :'marc', to:'mathieu'},
+          {from :'julie', to: btoa('mathieu')},
+          {from :'mathieu', to:btoa('céline')},
       ]
     },
     linkFor(){
