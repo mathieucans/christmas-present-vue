@@ -3,6 +3,7 @@
 <script lang="ts">
 
 import type {Present} from "@/Present";
+import {presentGenerator} from "@/Present";
 
 export default {
   data() {
@@ -12,10 +13,16 @@ export default {
   },
   methods: {
     generate() {
-      this.presents = [
-        {from: 'julie', to: btoa('mathieu')},
-        {from: 'mathieu', to: btoa('céline')},
-      ]
+      this.presents = presentGenerator([
+          "Mich",
+          "Mu",
+          "Thomas",
+          "Claudine",
+          "Denis",
+          "Julie",
+          "Céline",
+          "Mathieu",
+      ])
     },
     linkFor() {
       return 'present/mat/ju'
