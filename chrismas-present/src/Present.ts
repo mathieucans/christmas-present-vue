@@ -11,7 +11,7 @@ export function presentGenerator(participants:string[]) {
     for (const participant of participants) {
         const alreadyDone = result.map(s => s.to);
         const presentFor = participants.filter(to => to !== participant)
-            .filter(to => !alreadyDone.includes(to));
+            .filter(to => !alreadyDone.includes(btoa(to)));
         const toIndex = Math.floor(Math.random() * presentFor.length)
         result.push(new Present(participant, btoa(presentFor[toIndex])))
     }
