@@ -13,7 +13,7 @@ export default {
 
 <template>
   <div class="greetings">
-    <h1 class="green">Salut {{$route.params.from}} ! tu offriras un cadeau à {{to}}</h1>
+    <h1 class="green">Salut {{$route.params.from}} ! Tu offriras un cadeau à {{to}}</h1>
   </div>
 </template>
 

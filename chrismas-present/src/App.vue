@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="Des xx cadeaux !!" />
-    </div>
+    <img alt="Cadeau" class="logo" src="./assets/present.png" width="125" height="125"/>
+    <h1>Triage au sort des cadeaux</h1>
   </header>
 
   <main>
-    <router-view />
+    <router-view/>
   </main>
 </template>
 

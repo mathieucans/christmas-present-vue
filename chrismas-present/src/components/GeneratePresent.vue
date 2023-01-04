@@ -14,8 +14,8 @@ export default {
   methods: {
     generate() {
       this.presents = presentGenerator([
-          "Mich",
-          "Mu",
+          "Michel",
+          "Murielle",
           "Thomas",
           "Claudine",
           "Denis",
@@ -34,9 +34,9 @@ export default {
 <template>
   <div class="greetings">
     <h1 class="green">
-      GENERATEUR DE CADEAUX
+      GÉNÉRATEUR DE CADEAUX
     </h1>
-    <button @click="generate">Générer</button>
+    <button class="main-action" @click="generate">TIRER AU SORT</button>
     <div v-for="present in presents">
       <router-link :to="'/present/' + present.from + '/' + present.to">Le cadeau qu'offrira {{ present.from }}
       </router-link>
@@ -55,6 +55,11 @@ h3 {
   font-size: 1.2rem;
 }
 
+.greetings {
+  display: flex;
+  flex-direction: column;
+}
+
 .greetings h1,
 .greetings h3 {
   text-align: center;
@@ -66,4 +71,16 @@ h3 {
     text-align: left;
   }
 }
+
+.main-action {
+  background-color: #00bd7e;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 </style>
