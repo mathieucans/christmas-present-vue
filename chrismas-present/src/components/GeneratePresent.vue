@@ -28,17 +28,19 @@ export default {
     generate() {
       this.presents = presentGenerator(
           this.participants,
-          (f,t)=> f==='Murielle' && t === 'Elsa')
+          (f, t) => f === 'Murielle' && t === 'Elsa')
     },
     linkFor() {
       return 'present/mat/ju'
     },
-    remove(participant:string){
+    remove(participant: string) {
       this.participants = this.participants.filter(p => p !== participant)
     },
-    addParticipant(){
-      this.participants.push(this.newParticipant)
-      this.newParticipant = undefined
+    addParticipant() {
+      if (this.newParticipant) {
+        this.participants.push(this.newParticipant)
+        this.newParticipant = undefined
+      }
     }
   }
 }
@@ -60,7 +62,8 @@ export default {
       <input class="new-name" v-model="newParticipant" placeholder="edit me"/>
       <button class="add-action"
               :disabled="newParticipant === undefined"
-              @click="addParticipant">Ajouter</button>
+              @click="addParticipant">Ajouter
+      </button>
     </div>
     <button class="main-action" @click="generate">TIRER AU SORT</button>
     <div v-for="present in presents">
