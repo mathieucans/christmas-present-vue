@@ -8,12 +8,8 @@ import {presentGenerator} from "@/Present";
 export default {
   data() {
     return {
-      presents: new Array<Present>()
-    }
-  },
-  methods: {
-    generate() {
-      this.presents = presentGenerator([
+      presents: new Array<Present>(),
+      participants: new Array<string>(
           "Michel",
           "Murielle",
           "Thomas",
@@ -22,7 +18,15 @@ export default {
           "Julie",
           "Céline",
           "Mathieu",
-      ])
+          "Elsa"
+      )
+    }
+  },
+  methods: {
+    generate() {
+      this.presents = presentGenerator(
+          this.participants,
+          (f,t)=> f==='Murielle' && t === 'Elsa')
     },
     linkFor() {
       return 'present/mat/ju'
@@ -36,6 +40,12 @@ export default {
     <h1 class="green">
       GÉNÉRATEUR DE CADEAUX
     </h1>
+    <h2>Participants:</h2>
+    <div class="participans">
+      <div v-for="participant in participants">
+        <div>{{ participant }}</div>
+      </div>
+    </div>
     <button class="main-action" @click="generate">TIRER AU SORT</button>
     <div v-for="present in presents">
       <router-link :to="'/present/' + present.from + '/' + present.to">Le cadeau qu'offrira {{ present.from }}
