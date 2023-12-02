@@ -30,6 +30,9 @@ export default {
     },
     linkFor() {
       return 'present/mat/ju'
+    },
+    remove(participant:string){
+      this.participants = this.participants.filter(p => p !== participant)
     }
   }
 }
@@ -41,9 +44,10 @@ export default {
       GÉNÉRATEUR DE CADEAUX
     </h1>
     <h2>Participants:</h2>
-    <div class="participans">
-      <div v-for="participant in participants">
-        <div>{{ participant }}</div>
+    <div class="participants">
+      <div v-for="participant in participants" class="participant-row">
+        <div class="participant-name">{{ participant }}</div>
+        <div class="participant-remove" @click="remove(participant)">❌</div>
       </div>
     </div>
     <button class="main-action" @click="generate">TIRER AU SORT</button>
@@ -91,6 +95,21 @@ h3 {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+.participants {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.participant-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.participant-remove {
+  cursor: pointer;
 }
 
 </style>
