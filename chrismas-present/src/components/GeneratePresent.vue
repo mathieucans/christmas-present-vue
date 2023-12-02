@@ -8,6 +8,7 @@ import {presentGenerator} from "@/Present";
 export default {
   data() {
     return {
+      newParticipant: undefined,
       presents: new Array<Present>(),
       participants: new Array<string>(
           "Michel",
@@ -20,6 +21,7 @@ export default {
           "Mathieu",
           "Elsa"
       )
+
     }
   },
   methods: {
@@ -33,6 +35,10 @@ export default {
     },
     remove(participant:string){
       this.participants = this.participants.filter(p => p !== participant)
+    },
+    addParticipant(){
+      this.participants.push(this.newParticipant)
+      this.newParticipant = undefined
     }
   }
 }
@@ -49,6 +55,12 @@ export default {
         <div class="participant-name">{{ participant }}</div>
         <div class="participant-remove" @click="remove(participant)">❌</div>
       </div>
+    </div>
+    <div class="participant-add">
+      <input class="new-name" v-model="newParticipant" placeholder="edit me"/>
+      <button class="add-action"
+              :disabled="newParticipant === undefined"
+              @click="addParticipant">Ajouter</button>
     </div>
     <button class="main-action" @click="generate">TIRER AU SORT</button>
     <div v-for="present in presents">
@@ -97,6 +109,12 @@ h3 {
   font-size: 16px;
 }
 
+.add-action {
+  background-color: #00bd7e;
+  border: none;
+  color: white;
+}
+
 .participants {
   display: flex;
   flex-direction: column;
@@ -108,8 +126,19 @@ h3 {
   justify-content: space-between;
 }
 
+.participant-add {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+}
+
 .participant-remove {
   cursor: pointer;
+}
+
+.new-name {
+  flex-grow: 1;
+  margin: 4px;
 }
 
 </style>
