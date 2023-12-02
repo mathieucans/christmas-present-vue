@@ -6,6 +6,19 @@ export class Present {
     }
 }
 
+function isForbidden(
+    shuffle: string[],
+    forbiddenRules: [((f: string, t: string) => boolean)]) {
+    for (let i = 0; i < shuffle.length; i++) {
+        const from = shuffle[i];
+        const to = shuffle[(i + 1) % shuffle.length];
+        if(forbiddenRules.find(f => f(from, to))) {
+            return true
+        }
+    }
+    return false;
+}
+
 /**
  *
  * generated with ChatGPT by the following question:
@@ -24,14 +37,22 @@ export class Present {
  *  </code>
  * @param participants
  */
-export function presentGenerator(participants: string[]) {
+export function presentGenerator(participants: string[], ...forbiddenRules: [(f: string, t: string) => boolean]) {
     const result = new Array<Present>();
-    const shuffle = participants.sort(() => Math.random() - 0.5);
+    let shuffle = participants.sort(() => Math.random() - 0.5);
+
+    let count = 0
+    while (isForbidden(shuffle, forbiddenRules) && count < 100){
+        shuffle = participants.sort(() => Math.random() - 0.5);
+        count++
+    }
+
+
     for (let i = 0; i < shuffle.length; i++) {
         const participant = shuffle[i];
         const recipient = shuffle[(i + 1) % shuffle.length];
-
         result.push(new Present(participant, btoa(recipient)));
     }
+
     return result
 }
