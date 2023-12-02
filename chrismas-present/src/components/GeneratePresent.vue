@@ -29,6 +29,7 @@ export default {
       if (this.newParticipant) {
         this.participants.push(this.newParticipant)
         this.newParticipant = undefined
+        this.$refs.newName.focus();
       }
     }
   }
@@ -48,7 +49,12 @@ export default {
       </div>
     </div>
     <div class="participant-add">
-      <input class="new-name" v-model="newParticipant" placeholder="edit me"/>
+      <input class="new-name"
+             ref="newName"
+             v-model="newParticipant"
+             placeholder="edit me"
+             v-on:keyup.enter="addParticipant"
+      />
       <button class="add-action"
               :disabled="newParticipant === undefined"
               @click="addParticipant">Ajouter
