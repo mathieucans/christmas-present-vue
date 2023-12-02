@@ -10,18 +10,7 @@ export default {
     return {
       newParticipant: undefined,
       presents: new Array<Present>(),
-      participants: new Array<string>(
-          "Michel",
-          "Murielle",
-          "Thomas",
-          "Claudine",
-          "Denis",
-          "Julie",
-          "Céline",
-          "Mathieu",
-          "Elsa"
-      )
-
+      participants: new Array<string>()
     }
   },
   methods: {
