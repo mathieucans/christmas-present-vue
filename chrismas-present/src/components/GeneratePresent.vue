@@ -29,7 +29,6 @@ export default {
       if (this.newParticipant) {
         this.participants.push(this.newParticipant)
         this.newParticipant = undefined
-        this.$refs.newName.focus();
       }
     }
   }
