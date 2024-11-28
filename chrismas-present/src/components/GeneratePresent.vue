@@ -92,6 +92,7 @@ h3 {
 .greetings {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
 .greetings h1,
