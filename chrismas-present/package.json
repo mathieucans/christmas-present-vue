@@ -9,7 +9,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "deploy": "npx firebase deploy --only hosting"
+    "prepublish": "npm run build",
+    "publish": "npx firebase deploy --only hosting"
   },
   "dependencies": {
     "vue": "^3.2.45",
