@@ -19,8 +19,11 @@ export default {
           this.participants,
           (f, t) => f === 'Murielle' && t === 'Elsa')
     },
-    linkFor() {
-      return 'present/mat/ju'
+    linkfor(present: Present) {
+      return '/present/' + present.from + '/' + present.to
+    },
+    copy(present: Present) {
+      navigator.clipboard.writeText(window.location.origin + this.linkfor(present))
     },
     remove(participant: string) {
       this.participants = this.participants.filter(p => p !== participant)
@@ -60,9 +63,17 @@ export default {
       </button>
     </div>
     <button class="main-action" @click="generate">TIRER AU SORT</button>
-    <div v-for="present in presents">
-      <router-link :to="'/present/' + present.from + '/' + present.to">Le cadeau qu'offrira {{ present.from }}
-      </router-link>
+
+    <div class="present-links">
+      <div v-for="present in presents" class="link-row">
+        <router-link :to="linkfor(present)">Le cadeau qu'offrira {{ present.from }}
+        </router-link>
+        <button class="copy-action"
+                @click="copy(present)"
+                title="copier dans le presse papier">
+          <img src="../assets/ic_File_copy.svg">
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -106,10 +117,33 @@ h3 {
   font-size: 16px;
 }
 
+.copy-action {
+  background-color: #00bd7e;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.present-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+.link-row {
+  display: flex;
+  justify-content: space-between;
+}
 .add-action {
   background-color: #00bd7e;
   border: none;
   color: white;
+}
+
+.copy-action > img {
+  filter: invert(100%);
 }
 
 .participants {
