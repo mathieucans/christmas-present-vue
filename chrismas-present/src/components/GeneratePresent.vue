@@ -69,7 +69,7 @@ export default {
     <h2 v-if="presents.length > 0">3 - Copiez les liens pour les envoyer</h2>
     <div class="present-links">
       <div v-for="present in presents" class="link-row">
-        <router-link :to="linkfor(present)">Le cadeau qu'offrira {{ present.from }}
+        <router-link target='_blank' :to="linkfor(present)">Le cadeau qu'offrira {{ present.from }}
         </router-link>
         <button class="copy-action"
                 @click="copy(present)"
