@@ -43,13 +43,7 @@ export default {
     <h1 class="green">
       GÉNÉRATEUR DE CADEAUX
     </h1>
-    <h2>Participants:</h2>
-    <div class="participants">
-      <div v-for="participant in participants" class="participant-row">
-        <div class="participant-name">{{ participant }}</div>
-        <div class="participant-remove" @click="remove(participant)">❌</div>
-      </div>
-    </div>
+    <h2>1 - Ajoutez des participants:</h2>
     <div class="participant-add">
       <input class="new-name"
              ref="newName"
@@ -62,8 +56,17 @@ export default {
               @click="addParticipant">Ajouter
       </button>
     </div>
+    <div class="participants">
+      <div v-for="participant in participants" class="participant-row">
+        <div class="participant-name">{{ participant }}</div>
+        <div class="participant-remove" @click="remove(participant)">❌</div>
+      </div>
+    </div>
+
+    <h2>2 - Générez le tirage au sort</h2>
     <button class="main-action" @click="generate">TIRER AU SORT</button>
 
+    <h2 v-if="presents.length > 0">3 - Copiez les liens pour les envoyer</h2>
     <div class="present-links">
       <div v-for="present in presents" class="link-row">
         <router-link :to="linkfor(present)">Le cadeau qu'offrira {{ present.from }}
@@ -127,16 +130,19 @@ h3 {
   display: inline-block;
   font-size: 16px;
 }
+
 .present-links {
   display: flex;
   flex-direction: column;
   gap: 15px;
   padding: 15px;
 }
+
 .link-row {
   display: flex;
   justify-content: space-between;
 }
+
 .add-action {
   background-color: #00bd7e;
   border: none;
