@@ -50,3 +50,6 @@ npm run lint
 ```sh
 npx firebase deploy --only hosting
 ```
+
+### App déployée sous :
+https://chrismas-present-vue.firebaseapp.com/
